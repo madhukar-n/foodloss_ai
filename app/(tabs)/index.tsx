@@ -4,8 +4,11 @@ import { StyleSheet } from 'react-native';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { useLanguage } from '@/hooks/use-language';
+import { LanguageSwitcher } from '@/components/language-switcher';
 
 export default function HomeScreen() {
+  const { t } = useLanguage();
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -15,12 +18,13 @@ export default function HomeScreen() {
           style={styles.logo}
         />
       }>
+      <LanguageSwitcher />
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Food Circulator AI</ThemedText>
+        <ThemedText type="title">{t('home.title')}</ThemedText>
       </ThemedView>
       <ThemedView style={styles.descriptionContainer}>
         <ThemedText>
-          Welcome to Food Circulator AI, your intelligent companion for reducing food waste and optimizing food circulation.
+          {t('home.description')}
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
